@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <style>
+        body{
+            background-color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            flex-direction: column;
+            width: 100%;
+            margin: 0;
+
+        }
+        h1{
+            background-color: rgb(99, 137, 137);
+            border-radius: 15px;
+            align-self: center;
+            justify-self: center;
+            padding: 30px;
+            padding-left: 100px;
+            padding-right: 100px;
+
+        }
+        #pokenome{
+            align-self: center;
+            justify-self: center;
+            height: 200px;
+            width: 200px;
+            border-radius: 15px;
+            margin-top: 50px;
+            font-size: xx-large;
+        }
+        button{
+            padding: 20px;
+            border-radius: 15px;
+            padding-left: 100px;
+            padding-right: 100px;
+            font-family: 'Courier New', Courier, monospace, bold;
+        }
+        #pokeimg{
+            background-color: blue;
+            border-radius: 15px;
+            margin: 0;
+            margin-bottom: 80px;
+        }
+        #poketipo{
+            background-color: aliceblue;
+            padding: 30px 50px;
+            border-radius: 15px;
+        }
+        input{
+            margin: 15px;
+            padding: 30px 50px;
+            border-radius: 15px;
+            background-color: blue;
+            text-align: center;
+        }
+        input{
+            color: white;
+            font-size: x-large;
+        }
+        div{
+            flex-direction: row;
+            align-content: center;
+            background-color: rgb(133, 133, 220);
+            padding: 20px 10px;
+            border-radius: 15px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Pokédex</h1>
+    <input id="nome" placeholder="INSIRA O ID OU NOME">
+    <button onclick="buscar()">Buscar</button>
+
+    <h2 id="pokenome"></h2>
+    <img id="pokeimg" width="200">
+    <p id="poketipo"></p>
+    <div>
+    <h2 id="pokemove1">habilidade 1</h2>
+    <h2 id="pokemove2">habilidade 2</h2>
+    <h2 id="pokemove3">habilidade 3</h2>
+    <h2 id="pokemove4">habilidade 4</h2>
+    </div>
+    
+
+    <button id ="aleatorio" onclick="randomificar()">POKEMON ALEATÓRIO</button>
+
+    <script>
+        async function randomificar(){
+            const nomeRandom = Math.floor(Math.random()*1026) //1025 pokemons
+            const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nomeRandom}`)
+
+            if(!resposta.ok){
+                document.getElementById('pokenome').textContent = "Pokemon não encontrado!"
+                document.getElementById('pokeimg').src = ""
+                document.getElementById('poketipo').textContent = ''
+                document.getElementById('pokemoves1').textContent= ''
+                document.getElementById('pokemoves2').textContent= ''
+                document.getElementById('pokemoves3').textContent= ''
+                document.getElementById('pokemoves4').textContent= ''
+                return;
+            }
+
+            const dados = await resposta.json();
+            document.getElementById('pokenome').textContent = dados.name;
+            document.getElementById('pokeimg').src = dados.sprites.front_default;
+            document.getElementById('poketipo').textContent = "Tipo: " + dados.types[0].type.name;
+            document.getElementById('pokemove1').textContent= dados.moves[0].move.name;
+            document.getElementById('pokemove2').textContent= dados.moves[5].move.name;
+            document.getElementById('pokemove3').textContent= dados.moves[6].move.name;
+            document.getElementById('pokemove4').textContent= dados.moves[7].move.name;
+        }
+                async function buscar(){
+            const nome = document.getElementById("nome").value.toLowerCase();
+            const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
+            if(!resposta.ok){
+                document.getElementById('pokenome').textContent = "Pokemon não encontrado!"
+                document.getElementById('pokeimg').src = ""
+                document.getElementById('poketipo').textContent = ''
+                document.getElementById('pokemoves1').textContent= ''
+                document.getElementById('pokemoves2').textContent= ''
+                document.getElementById('pokemoves3').textContent= ''
+                document.getElementById('pokemoves4').textContent= ''
+                return;
+            }
+
+            const dados = await resposta.json();
+            document.getElementById('pokenome').textContent = dados.name;
+            document.getElementById('pokeimg').src = dados.sprites.front_default;
+            document.getElementById('poketipo').textContent = "Tipo: " + dados.types[0].type.name;
+            document.getElementById('pokemove1').textContent= dados.moves[0].move.name;
+            document.getElementById('pokemove2').textContent= dados.moves[5].move.name;
+            document.getElementById('pokemove3').textContent= dados.moves[6].move.name;
+            document.getElementById('pokemove4').textContent= dados.moves[7].move.name;
+        }
+    </script>
+        
+
+    </script>
+</body>
+</html>
