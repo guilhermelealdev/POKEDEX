@@ -1,0 +1,77 @@
+body {
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+
+}
+
+h1 {
+    background-color: rgb(99, 137, 137);
+    border-radius: 15px;
+    align-self: center;
+    justify-self: center;
+    padding: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+
+#pokenome {
+    align-self: center;
+    justify-self: center;
+    height: 200px;
+    width: 200px;
+    border-radius: 15px;
+    margin-top: 50px;
+    font-size: xx-large;
+}
+
+button {
+    padding: 20px;
+    border-radius: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-family: 'Courier New', Courier, monospace, bold;
+}
+
+#pokeimg {
+    background-color: blue;
+    border-radius: 15px;
+    margin: 0;
+    margin-bottom: 80px;
+}
+
+#poketipo {
+    background-color: aliceblue;
+    padding: 30px 50px;
+    border-radius: 15px;
+}
+
+input {
+    margin: 15px;
+    padding: 30px 50px;
+    border-radius: 15px;
+    background-color: blue;
+    text-align: center;
+}
+
+input {
+    color: white;
+    font-size: x-large;
+}
+
+div {
+    flex-direction: row;
+    align-content: center;
+    background-color: rgb(133, 133, 220);
+    padding: 20px 10px;
+    border-radius: 15px;
+
+}
