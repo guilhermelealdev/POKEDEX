@@ -8,10 +8,10 @@ async function randomificar() {
     document.getElementById("pokenome").textContent = "Pokemon não encontrado!";
     document.getElementById("pokeimg").src = "";
     document.getElementById("poketipo").textContent = "";
-    document.getElementById("pokemoves1").textContent = "";
-    document.getElementById("pokemoves2").textContent = "";
-    document.getElementById("pokemoves3").textContent = "";
-    document.getElementById("pokemoves4").textContent = "";
+    document.getElementById("pokemove1").textContent = "";
+    document.getElementById("pokemove2").textContent = "";
+    document.getElementById("pokemove3").textContent = "";
+    document.getElementById("pokemove4").textContent = "";
     return;
   }
 
@@ -31,10 +31,10 @@ async function buscar() {
     document.getElementById("pokenome").textContent = "POKEMON NÃO ENCONTRADO";
     document.getElementById("pokeimg").src = "";
     document.getElementById("poketipo").textContent = "";
-    document.getElementById("pokemoves1").textContent = "";
-    document.getElementById("pokemoves2").textContent = "";
-    document.getElementById("pokemoves3").textContent = "";
-    document.getElementById("pokemoves4").textContent = "";
+    document.getElementById("pokemove1").textContent = "";
+    document.getElementById("pokemove2").textContent = "";
+    document.getElementById("pokemove3").textContent = "";
+    document.getElementById("pokemove4").textContent = "";
     return;
   }
 
