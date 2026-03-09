@@ -1,0 +1,53 @@
+.introducao{
+    align-self: flex-start;
+    justify-self: center;
+}
+
+
+.pokemon{
+  margin: 5em;
+  background-color: rgb(254, 110, 110);;
+  width: 25vw;
+  height: 40em;
+  align-content: center;
+  border-radius: 10px;
+  border: 3px solid black;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 0.3em 1fr;
+}
+
+.pokeImagem{
+    display: flex;
+    width: 15em;
+    height: 15em;
+    max-width: 15em;
+    max-height: 15em;
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+    background-color: rgba(178, 253, 253, 0.513);
+    border-radius: 100%;
+    margin-bottom: 1em;
+    transition: 0.2s;
+}
+
+.pokeImagem:hover{
+    scale: 1.1;
+    margin: 1em;
+    background-color: rgba(178, 253, 253, 0.827);
+    margin-bottom: 2em;
+}
+
+.habilidades{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background-color: rgb(178, 253, 253);
+    border-radius: 4px;
+}
+
+.pokeHabilidade{
+    margin: 1.4em;
+    background-color: rgba(0, 140, 255, 0.382);
+    border-radius: 20px;
+}
