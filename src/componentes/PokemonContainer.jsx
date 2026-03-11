@@ -4,9 +4,10 @@ import { PokemonCardSimples } from "./PokemonCardSimples";
 
 export function PokemonContainer() {
   const [pokemon, setPokemon] = useState(null);
+  let [idPokemon, setIdPokemon] = useState(1);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+    fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
       .then((resposta) => resposta.json())
       .then((dados) => {
         setPokemon(dados);
@@ -16,27 +17,50 @@ export function PokemonContainer() {
   if (!pokemon) {
     return <p>Carregando pokemon. . .</p>;
   }
+
+  function proximoPokemon() {
+    setIdPokemon(++idPokemon);
+     fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        setPokemon(dados);
+      });
+  }
+    function pokemonAnterior() {
+    if(idPokemon === 1){
+      return;
+    }
+    setIdPokemon(--idPokemon);
+     fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        setPokemon(dados);
+      });
+  }
+
   return (
     <PokemonCardSimples
       nome={pokemon.name}
-      imagem={pokemon.sprites.front_default}
-      imagemShiny={pokemon.sprites.front_shiny}
+      imagem={
+        pokemon.sprites.versions["generation-v"]["black-white"]["animated"]
+          .front_default
+      }
+      imagemShiny={
+        pokemon.sprites.versions["generation-v"]["black-white"]["animated"]
+          .front_shiny
+      }
       numero={pokemon.id}
       altura={pokemon.height}
       peso={pokemon.weight}
       tipoUm={pokemon.types[0].type.name}
       tipoDois={pokemon.types[1] ? " / " + pokemon.types[1].type.name : ""}
-      habilidadeUm={pokemon.abilities[0].ability.name}
-      habilidadeDois={
-        pokemon.abilities[1] ? pokemon.abilities[1].ability.name : ""
-      }
-      habilidadeTres={
-        pokemon.abilities[2] ? pokemon.abilities[2].ability.name : ""
-      }
-      habilidadeQuatro={
-        pokemon.abilities[3] ? pokemon.abilities[3].ability.name : ""
-      }
+      habilidadeUm={pokemon.moves[0].move.name}
+      habilidadeDois={pokemon.moves[1] ? pokemon.moves[1].move.name : ""}
+      habilidadeTres={pokemon.moves[2] ? pokemon.moves[2].move.name : ""}
+      habilidadeQuatro={pokemon.moves[3] ? pokemon.moves[3].move.name : ""}
       experiencia={pokemon.base_experience}
+      proximoPokemon={proximoPokemon}
+      pokemonAnterior={pokemonAnterior}
     />
   );
 }
